@@ -1,0 +1,19 @@
+Naive Bayes
+SVM
+Decision tree
+random forest
+
+regression
+outliers
+clustering
+feature scaling
+pca
+validation
+evaluation metrics
+
+
+
+Naive Bayes
+1. Basic model to predict on the training features:
+recall: 0.705
+precision: 0.210
