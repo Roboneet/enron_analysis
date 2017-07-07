@@ -34,16 +34,6 @@ labels, features = targetFeatureSplit(data)
 # Provided to give you a starting point. Try a variety of classifiers.
 from sklearn.naive_bayes import GaussianNB
 clf = GaussianNB()
-clf.fit(features, labels)
-pred = clf.predict(features)
-
-from sklearn.metrics import recall_score
-score = recall_score(labels, pred)
-print score
-
-from sklearn.metrics import precision_score
-score = precision_score(labels, pred)
-print score
 
 ### Task 5: Tune your classifier to achieve better than .3 precision and recall 
 ### using our testing script. Check the tester.py script in the final project
@@ -55,8 +45,34 @@ print score
 # Example starting point. Try investigating other evaluation techniques!
 from sklearn.cross_validation import train_test_split
 features_train, features_test, labels_train, labels_test = \
-    train_test_split(features, labels, test_size=0.3, random_state=42)
+    train_test_split(features, labels, test_size=0.3, random_state=25)
 
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
+
+from sklearn.metrics import recall_score
+score = recall_score(labels_test, pred)
+print score
+
+from sklearn.metrics import precision_score
+score = precision_score(labels_test, pred)
+print score
+
+# # plotting data
+
+# import matplotlib.pyplot as plt
+
+# train_color = "r"
+# test_color = "b"
+# for feature, label in zip(features_test, labels_test):
+#     plt.scatter( feature, target, color=test_color ) 
+# for feature, target in zip(features_train, labels_train):
+#     plt.scatter( feature, target, color=train_color )
+
+# plt.xlabel(features_list[1])
+# plt.ylabel(features_list[2])
+# plt.legend()
+# plt.show()
 
 ### Task 6: Dump your classifier, dataset, and features_list so anyone can
 ### check your results. You do not need to change anything below, but make sure
@@ -64,3 +80,6 @@ features_train, features_test, labels_train, labels_test = \
 ### generates the necessary .pkl files for validating your results.
 
 dump_classifier_and_data(clf, my_dataset, features_list)
+
+
+

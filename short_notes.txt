@@ -12,8 +12,13 @@ validation
 evaluation metrics
 
 
-
+Examining realtion btw financial features such as loans and salary to identify poi
 Naive Bayes
 1. Basic model to predict on the training features:
 recall: 0.705
 precision: 0.210
+2. Divided model into trainnig and testing data:
+recall: 0.8
+precision: 0.15
+
+very poor precision and very good recall
