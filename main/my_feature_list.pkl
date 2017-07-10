@@ -5,4 +5,16 @@ aS'salary'
 p2
 aS'loan_advances'
 p3
+aS'director_fees'
+p4
+aS'bonus'
+p5
+aS'long_term_incentive'
+p6
+aS'total_payments'
+p7
+aS'from_this_person_to_poi'
+p8
+aS'from_poi_to_this_person'
+p9
 a.

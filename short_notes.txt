@@ -22,3 +22,10 @@ recall: 0.8
 precision: 0.15
 
 very poor precision and very good recall
+
+Examining relation between 'salary','loan_advances','director_fees', 'bonus','long_term_incentive', 'total_payments', 'from_this_person_to_poi','from_poi_to_this_person'
+1. Using decision tree :
+recall : 0.0
+precision : 0.0
+
+Oh boy ! just when I thought things can't get any worse
