@@ -28,4 +28,13 @@ Examining relation between 'salary','loan_advances','director_fees', 'bonus','lo
 recall : 0.0
 precision : 0.0
 
-Oh boy ! just when I thought things can't get any worse
+Oh boy ! just when I thought things can't get any worse.
+
+
+Okay.. new plans ! Follow the rubric to make my life easy
+Part 1:
+Understanding the dataset and question
+
+A. Data exploration:
+	Out of the 146 data points , 18 are known to be pois.
+	Out of the 21 features available, 4 features , deferral_payments, loan_advances, restricted_stock_deferred and director_fees, have too less information associated with them ( more than 100 NaN points ). Hence, these features should not be used for the analysis.

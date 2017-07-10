@@ -6,12 +6,14 @@ sys.path.append("../tools/")
 
 from feature_format import featureFormat, targetFeatureSplit
 from tester import dump_classifier_and_data
-from class_vis import prettyPicture, output_image
+
+
+from helper import *
 
 ### Task 1: Select what features you'll use.
 ### features_list is a list of strings, each of which is a feature name.
 ### The first feature must be "poi".
-features_list = ['poi','salary','loan_advances','director_fees', 'bonus','long_term_incentive', 'total_payments', 'from_this_person_to_poi','from_poi_to_this_person'] # You will need to use more features
+features_list = ['poi','salary','bonus'] # You will need to use more features
 
 ### Load the dictionary containing the dataset
 with open("final_project_dataset.pkl", "r") as data_file:
@@ -22,7 +24,7 @@ with open("final_project_dataset.pkl", "r") as data_file:
 ### Store to my_dataset for easy export below.
 my_dataset = data_dict
 
-
+data_exploration(my_dataset)
 ### Extract features and labels from dataset for local testing
 data = featureFormat(my_dataset, features_list, sort_keys = True)
 labels, features = targetFeatureSplit(data)
@@ -52,13 +54,6 @@ features_train, features_test, labels_train, labels_test = \
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 
-from sklearn.metrics import recall_score
-score = recall_score(labels_test, pred)
-print score
-
-from sklearn.metrics import precision_score
-score = precision_score(labels_test, pred)
-print score
 
 
 ### Task 6: Dump your classifier, dataset, and features_list so anyone can
