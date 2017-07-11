@@ -38,3 +38,7 @@ Understanding the dataset and question
 A. Data exploration:
 	Out of the 146 data points , 18 are known to be pois.
 	Out of the 21 features available, 4 features , deferral_payments, loan_advances, restricted_stock_deferred and director_fees, have too less information associated with them ( more than 100 NaN points ). Hence, these features should not be used for the analysis.
+B. Outliers:
+	Examining salary vs. bonus , an outlier popped up, saved in outliers1.png . The outlier turns out to be the 'TOTAL' field . It is removed. The resulting figure is saved in outliers2.png
+	outliers3.png : pois are marked in red, the rest in blue
+	The outliers are valid data points. They don't have to be removed.

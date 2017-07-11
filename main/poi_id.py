@@ -3,7 +3,7 @@
 import sys
 import pickle
 sys.path.append("../tools/")
-
+import matplotlib.pyplot as plt
 from feature_format import featureFormat, targetFeatureSplit
 from tester import dump_classifier_and_data
 
@@ -24,11 +24,27 @@ with open("final_project_dataset.pkl", "r") as data_file:
 ### Store to my_dataset for easy export below.
 my_dataset = data_dict
 
+my_dataset.pop('TOTAL',0)
 data_exploration(my_dataset)
+
 ### Extract features and labels from dataset for local testing
 data = featureFormat(my_dataset, features_list, sort_keys = True)
 labels, features = targetFeatureSplit(data)
 
+color = 'b'
+for point in data:
+	if point[0] == 1:
+		color = 'm'
+	else:
+		color = 'b'
+	plt.scatter(point[1],point[2],color=color)
+
+
+plt.xlabel('slary')
+plt.ylabel('bonus')
+
+plt.savefig('outliers2.png')
+plt.show()
 ### Task 4: Try a varity of classifiers
 ### Please name your classifier clf for easy export below.
 ### Note that if you want to do PCA or other multi-stage operations,

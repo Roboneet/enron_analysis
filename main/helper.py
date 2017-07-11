@@ -28,3 +28,4 @@ def data_exploration(data):
 	print 'There is too less info available about : ' , ', '.join(_too_many_nans)
 	print '======================================'
 
+
