@@ -13,19 +13,20 @@ from helper import *
 ### Task 1: Select what features you'll use.
 ### features_list is a list of strings, each of which is a feature name.
 ### The first feature must be "poi".
-features_list = ['poi','salary','bonus'] # You will need to use more features
+features_list = ['poi','deferred_income','exercised_stock_options','long_term_incentive','from_this_person_to_poi','from_poi_to_this_person','salary','loan_advances','restricted_stock','bonus','loan_advances'] # You will need to use more features
 
 ### Load the dictionary containing the dataset
 with open("final_project_dataset.pkl", "r") as data_file:
     data_dict = pickle.load(data_file)
 
+data_exploration(data_dict)
 ### Task 2: Remove outliers
 ### Task 3: Create new feature(s)
 ### Store to my_dataset for easy export below.
-my_dataset = data_dict
+my_dataset = clean_nans(clean_nans(data_dict, features_list[1]), features_list[2])
 
 my_dataset.pop('TOTAL',0)
-data_exploration(my_dataset)
+
 
 ### Extract features and labels from dataset for local testing
 data = featureFormat(my_dataset, features_list, sort_keys = True)
@@ -34,16 +35,19 @@ labels, features = targetFeatureSplit(data)
 color = 'b'
 for point in data:
 	if point[0] == 1:
-		color = 'm'
+		color = 'r'
 	else:
 		color = 'b'
 	plt.scatter(point[1],point[2],color=color)
 
+max_feature_1 = max(my_dataset, key=lambda x: my_dataset[x][features_list[1]])
+max_feature_2 = max(my_dataset, key=lambda x: my_dataset[x][features_list[2]])
+print 'max_feature_1 :', max_feature_1
+print 'max_feature_2 :', max_feature_2
+plt.xlabel(features_list[1])
+plt.ylabel(features_list[2])
 
-plt.xlabel('slary')
-plt.ylabel('bonus')
-
-plt.savefig('outliers2.png')
+plt.savefig(features_list[1]+'-'+features_list[2]+'.png')
 plt.show()
 ### Task 4: Try a varity of classifiers
 ### Please name your classifier clf for easy export below.

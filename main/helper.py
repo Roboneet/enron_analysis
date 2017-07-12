@@ -29,3 +29,14 @@ def data_exploration(data):
 	print '======================================'
 
 
+def clean_nans(data, feature_names):
+	new_data = {}
+	for person in data:
+		f = 1
+		for feture in feature_names:
+			if data[person][feature_name] == 'NaN':
+				f = 0
+		if f:
+			new_data[person] = data[person]
+
+	return new_data
