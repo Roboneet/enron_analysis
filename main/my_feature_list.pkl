@@ -13,11 +13,8 @@ aS'from_poi_to_this_person'
 p6
 aS'salary'
 p7
-aS'loan_advances'
-p8
 aS'restricted_stock'
-p9
+p8
 aS'bonus'
-p10
-ag8
+p9
 a.

@@ -13,7 +13,7 @@ from helper import *
 ### Task 1: Select what features you'll use.
 ### features_list is a list of strings, each of which is a feature name.
 ### The first feature must be "poi".
-features_list = ['poi','deferred_income','exercised_stock_options','long_term_incentive','from_this_person_to_poi','from_poi_to_this_person','salary','loan_advances','restricted_stock','bonus','loan_advances'] # You will need to use more features
+features_list = ['poi','deferred_income','exercised_stock_options']#,'long_term_incentive','from_this_person_to_poi','from_poi_to_this_person','salary','restricted_stock','bonus'] # You will need to use more features
 
 ### Load the dictionary containing the dataset
 with open("final_project_dataset.pkl", "r") as data_file:
@@ -23,8 +23,7 @@ data_exploration(data_dict)
 ### Task 2: Remove outliers
 ### Task 3: Create new feature(s)
 ### Store to my_dataset for easy export below.
-my_dataset = clean_nans(clean_nans(data_dict, features_list[1]), features_list[2])
-
+my_dataset = clean_nans(data_dict, features_list[1:3])
 my_dataset.pop('TOTAL',0)
 
 
@@ -42,12 +41,12 @@ for point in data:
 
 max_feature_1 = max(my_dataset, key=lambda x: my_dataset[x][features_list[1]])
 max_feature_2 = max(my_dataset, key=lambda x: my_dataset[x][features_list[2]])
-print 'max_feature_1 :', max_feature_1
-print 'max_feature_2 :', max_feature_2
+print 'max ',features_list[1],':', max_feature_1
+print 'max ',features_list[2],':', max_feature_2
 plt.xlabel(features_list[1])
 plt.ylabel(features_list[2])
 
-plt.savefig(features_list[1]+'-'+features_list[2]+'.png')
+plt.savefig('./images/'+features_list[1]+'-'+features_list[2]+'.png')
 plt.show()
 ### Task 4: Try a varity of classifiers
 ### Please name your classifier clf for easy export below.
@@ -67,12 +66,16 @@ clf = tree.DecisionTreeClassifier()
 ### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html
 
 # Example starting point. Try investigating other evaluation techniques!
+print 'splitting'
 from sklearn.cross_validation import train_test_split
 features_train, features_test, labels_train, labels_test = \
     train_test_split(features, labels, test_size=0.3, random_state=25)
 
+print 'training...'
 clf.fit(features_train, labels_train)
+print 'predicting'
 pred = clf.predict(features_test)
+print 'drawing'
 
 
 
